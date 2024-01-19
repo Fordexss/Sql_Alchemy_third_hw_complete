@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Управління уроками
+{% endblock title %}
+
+{% block main %}
+    <h1>Управління уроками</h1>
+
+    <ul>
+        {% for lesson in lessons %}
+            <li>
+                {{ lesson.title }}
+                {% if lesson.groups %}
+                    (Група:
+                    {% for group in lesson.groups %}
+                        {{ group.name }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                    )
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <form method="post" action="{{ url_for('lesson.lesson_add') }}">
+        <label for="title">Назва уроку:</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="groups">Група:</label>
+        <select id="groups" name="groups" multiple>
+            {% for group in groups %}
+                <option value="{{ group.id }}">{{ group.name }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Додати урок</button>
+    </form>
+{% endblock main %}

@@ -1,0 +1,17 @@
+{% block title %}
+    Управління групами
+{% endblock title %}
+
+{% block main %}
+    <ul>
+        {% for group in groups %}
+            <li>{{ group.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <form method="post" action="{{ url_for('group.group_add') }}">
+        <label for="name">Назва групи:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit">Додати групу</button>
+    </form>
+{% endblock main %}

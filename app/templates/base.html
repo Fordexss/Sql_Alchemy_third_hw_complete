@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <ul>
+        <li><a href="{{ url_for('group.group_add') }}">Групи</a></li>
+        <li><a href="{{ url_for('student.student_add') }}">Студенти</a></li>
+        <li><a href="{{ url_for('lesson.lesson_add') }}">Уроки</a></li>
+    </ul>
+    <title>Document</title>
+</head>
+<body>
+{% block nav%}
+{% endblock nav%}
+
+{% block main%}
+{% endblock main%}
+
+{% block footer%}
+{% endblock footer%}
+</body>
+</html>
